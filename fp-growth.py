@@ -182,6 +182,7 @@ for tid in transaction:
 largeitem = []
 minetree(headertable,largeitem)            
 #print(L) ##########print frequent itemsets
+
 rules=[]            
 rulesGenerator(L,0.7,rules,support)
 print('number of frequent itemsets =',len(L))
