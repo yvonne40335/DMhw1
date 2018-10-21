@@ -74,8 +74,8 @@ def getRules(frequentset,currentset, rules, support, minConf):
                 if(rule[0] == subSet and rule[1] == set(frequentset).difference(subSet)):
                     flag = True
             if(flag == False):
-                print( subSet, '-->', set(frequentset).difference(subSet), 'conf:', confidence)
                 rules.append((subSet, set(frequentset).difference(subSet), confidence))
+                #print( subSet, '-->', set(frequentset).difference(subSet), 'conf:', confidence) ########print rules                
  
             if(len(subSet) >= 2):
                 getRules(frequentset, subSet, rules, support, minConf)
@@ -126,8 +126,10 @@ while(len(Lkpre)>0):
     L.append(Lk)
     Lkpre = Lk
     k = k+1
-
+#print(L) ########itemset 
 
 rules=[]            
 rulesGenerator(L,0.7,rules,support)
+print('number of frequent itemsets =',len(L))
+print('number of rules =',len(rules))
 print("--- %s seconds ---" % (time.time() - start_time))
