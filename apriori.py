@@ -80,7 +80,7 @@ def getRules(frequentset,currentset, rules, support, minConf):
             if(len(subSet) >= 2):
                 getRules(frequentset, subSet, rules, support, minConf)
 
-
+Lcount=0
 #generate frequent-1 itemset
 minsup = 10
 L = []
@@ -103,6 +103,7 @@ for item, sup in list(C1.items()):
 
 L1.sort()
 L.append(L1)
+Lcount = len(L1)
 
 #generate frequent-k itemset
 Lkpre = L1
@@ -124,12 +125,13 @@ while(len(Lkpre)>0):
             support[item]=Ck.get(tuple(item))
     Lk.sort()
     L.append(Lk)
+    Lcount = Lcount+len(Lk)
     Lkpre = Lk
     k = k+1
 #print(L) ########itemset 
 
 rules=[]            
 rulesGenerator(L,0.7,rules,support)
-print('number of frequent itemsets =',len(L))
+print('number of frequent itemsets =',Lcount)
 print('number of rules =',len(rules))
 print("--- %s seconds ---" % (time.time() - start_time))
