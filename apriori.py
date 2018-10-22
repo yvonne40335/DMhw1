@@ -128,10 +128,11 @@ while(len(Lkpre)>0):
     Lcount = Lcount+len(Lk)
     Lkpre = Lk
     k = k+1
-#print(L) ########itemset 
+print(L) ########itemset 
 
 rules=[]            
 rulesGenerator(L,0.7,rules,support)
 print('number of frequent itemsets =',Lcount)
+print(rules)
 print('number of rules =',len(rules))
 print("--- %s seconds ---" % (time.time() - start_time))
